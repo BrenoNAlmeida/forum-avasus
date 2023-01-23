@@ -1,0 +1,10 @@
+modelos: Aluno , professor, super-gestor, subforuns, titulo, resposta
+
+Aluno : nome completo , nome social, cpf, data de nascimento, estado, cidade, senha, termos de uso(bool)
+professor : nome completo , nome social, cpf, data de nascimento, estado, cidade, senha
+superuser :  nome completo , nome social, cpf, data de nascimento, estado, cidade, senha
+topico : titulo, texto, ativo
+
+subforun : titulo, descrição, categoria, professor responsavel, quantidade de topicos
+post : titulo, nome do autor/ nome social(quando ouver), quantidade de respostas, data de criação, data ultima resposta
+resposta : nome do auto/ nome social, texto, data e hora
