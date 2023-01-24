@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Professor extends User
 {
     use HasFactory;
+
+    public function Subforum()
+    {
+        return $this->hasMany(Subforum::class);
+    }
+
 }
