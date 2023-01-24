@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Aluno extends User
+class Aluno extends Model
 {
     use HasFactory;
 
@@ -23,5 +23,10 @@ class Aluno extends User
     {
         return $this->hasMany(Comentario::class);
     }
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
     
