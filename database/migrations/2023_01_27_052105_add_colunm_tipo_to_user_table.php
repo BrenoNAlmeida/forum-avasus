@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProfessoresTable extends Migration
+class AddColunmTipoToUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class CreateProfessoresTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('professores', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->timestamps();
+    {   
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('tipo')->default(0);
         });
     }
 
@@ -27,6 +25,8 @@ class CreateProfessoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professores');
+        Schema::table('user', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -26,8 +26,4 @@ class Post extends Model
     {
         return $this->belongsTo(Subforum::class);
     }
-    public function Resposta()
-    {
-        return $this->hasMany(Resposta::class);
-    }
 }

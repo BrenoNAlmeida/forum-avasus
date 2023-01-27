@@ -15,7 +15,7 @@ class CreateRespostasTable extends Migration
     {
         Schema::create('respostas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('aluno_id')->constrained('alunos');
+            $table->foreignId('aluno_id')->constrained('users');
             $table->foreignId('post_id')->constrained('posts');
             $table->string('texto');
             $table->timestamps();

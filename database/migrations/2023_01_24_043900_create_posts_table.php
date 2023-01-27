@@ -18,8 +18,8 @@ class CreatePostsTable extends Migration
             $table->string('titulo');
             $table->string('texto');
             $table->boolean('ativo')->default(True);
-            $table->foreignId('aluno_id')->constrained('alunos');
-            $table->foreignId('subforum_id')->constrained('subforuns');
+            $table->foreignId('aluno_id')->constrained('users');
+            $table->foreignId('subforum_id')->constrained('subforums');
             $table->timestamps();
         });
     }
