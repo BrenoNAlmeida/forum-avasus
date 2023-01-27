@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeingPostToSubforunsTable extends Migration
+class RemoveEmailToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddForeingPostToSubforunsTable extends Migration
      */
     public function up()
     {
-        Schema::table('subforuns', function (Blueprint $table) {
-            $table->foreignId('post_id')->constrained();
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('email');
+            $table->dropColumn('email_verified_at');
         });
     }
 
@@ -25,8 +26,8 @@ class AddForeingPostToSubforunsTable extends Migration
      */
     public function down()
     {
-        Schema::table('subforuns', function (Blueprint $table) {
-            
+        Schema::table('users', function (Blueprint $table) {
+            //
         });
     }
 }

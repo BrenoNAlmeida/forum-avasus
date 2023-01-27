@@ -9,6 +9,10 @@ class Aluno extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+    ];
+
     public function Subforum()
     {
         return $this->hasMany(Subforum::class);

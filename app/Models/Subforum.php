@@ -25,8 +25,4 @@ class Subforum extends Model
         return $this->hasMany(Aluno::class);
     }
     
-    public function Post()
-    {
-        return $this->hasMany(Post::class);
-    }
 }

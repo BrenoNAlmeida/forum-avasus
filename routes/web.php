@@ -1,6 +1,8 @@
 <?php
-
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Route;
+use Mockery\Generator\Parameter;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
+
+Route::get ('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard-aluno', [DashboardController::class, 'aluno'])->name('dashboard-aluno');
+Route::get('/dashboard-professor', [DashboardController::class, 'professor'])->name('dashboard-professor');
+
+require __DIR__.'/auth.php';

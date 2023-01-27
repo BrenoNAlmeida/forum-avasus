@@ -3,8 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use League\CommonMark\Reference\Reference;
 
-class CreateSubforunsTable extends Migration
+class CreateSubforumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +14,10 @@ class CreateSubforunsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subforuns', function (Blueprint $table) {
+        Schema::create('subforums', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('professor_id')->constrained('professores');
-            $table->foreignId('aluno_id')->constrained('alunos');
+            $table->foreignId('professor_id')->constrained('users')->nullable();
+            $table->foreignId('aluno_id')->constrained('users')->nullable();
             $table->string('titulo');
             $table->string('texto');
             $table->boolean('ativo')->default(True);
@@ -32,6 +33,6 @@ class CreateSubforunsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subforuns');
+        Schema::dropIfExists('subforums');
     }
 }
