@@ -1,7 +1,7 @@
 @php 
 use Carbon\Carbon;
-@endphp
 
+@endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -10,7 +10,7 @@ use Carbon\Carbon;
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        <link rel="shortcut icon" href="{{ asset('public/avasus.ico') }}">
                     </a>
                 </div>
 
@@ -47,15 +47,15 @@ use Carbon\Carbon;
                 
                 @endif
 
-                @if(Auth::user());
+                @if(Auth::user())
                     @if(Auth::user()->tipo == 1)
                 <div class="hidden space-x-10 sm:-my-px sm:ml-8 sm:flex">
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('/')">
-                        {{ __('novo subforum') }}
-                </x-nav-link>
+                 <!--abrir modal novoForum-->
+  
                 </div>
                     @endif
                 @endif
+                
             
 
             </div>

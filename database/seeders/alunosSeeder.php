@@ -9,6 +9,7 @@ use App\Models\Aluno;
 use App\Models\Professor;
 use App\Models\Subforum;
 use App\Models\Post;
+use App\Models\Resposta;
 use tidy;
 
 class alunosSeeder extends Seeder
@@ -63,6 +64,18 @@ class alunosSeeder extends Seeder
             'ativo' => true,
             'aluno_id' => $user->id,
             'subforum_id' => $subforun->id,
+        ]);
+        $post2 = Post::create([
+            'titulo' => 'teste2',
+            'texto' => 'Post para teste2',
+            'ativo' => true,
+            'aluno_id' => $user->id,
+            'subforum_id' => $subforun->id,
+        ]);
+        $resposta = Resposta::create([
+            'texto' => 'Resposta para teste',
+            'aluno_id' => $user->id,
+            'post_id' => $post->id,
         ]);
 
     }

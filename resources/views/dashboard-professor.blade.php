@@ -4,7 +4,7 @@
             {{ __('Dashboard - Professor') }}
         </h2>
     </x-slot>
-
+    <livewire:novo-forum/>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -29,7 +29,7 @@
 
 
                                 <tr>
-                                    <td class="border px-4 py-2"><a href="{{ route('dashboard', $subforum->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ $subforum->titulo }}</a></td>
+                                    <td class="border px-4 py-2"><a href="{{ route('subforum', $subforum->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ $subforum->titulo }}</a></td>
                                     <td class="border px-4 py-2">{{ $subforum->texto }}</td>
                                     <td class="border px-6 py-2">{{$quantidade_posts}}</td>
                                 </tr>
