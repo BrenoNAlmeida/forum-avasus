@@ -57,6 +57,7 @@ class alunosSeeder extends Seeder
             'ativo' => true,
             'professor_id' => $user2->id,
             'aluno_id' => $aluno->id,
+            'categoria_id' => '1',
         ]);
         $post = Post::create([
             'titulo' => 'teste',
