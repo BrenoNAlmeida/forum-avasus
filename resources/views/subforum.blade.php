@@ -1,14 +1,16 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Topicos do subforum: 
-            {{ $subforum->titulo }}
-        </h2>
+    <x-slot name="header" class="flex justify-between">
+    
+        <div class="flex justify-between itens-center" >
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Topicos do subforum: 
+                {{ $subforum->titulo }}
+            </h2>
 
-        <!-- botão para criar um novo post -->
-       <div>
-            <a href="{{ route('subforum', $subforum->id ) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-4 rounded float:right" >Criar Topico</a>
-    </div>
+            <!-- botão para criar um novo post -->
+
+            <a href="{{ route('subforum', $subforum->id ) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-2 rounded float:right" >Criar Topico</a>
+        </div>
     </x-slot>
 
 
