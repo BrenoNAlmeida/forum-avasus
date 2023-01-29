@@ -3,6 +3,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Route;
 use Mockery\Generator\Parameter;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SubForumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,6 @@ Route::get('/', function () {
 Route::get ('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard-aluno', [DashboardController::class, 'aluno'])->name('dashboard-aluno');
 Route::get('/dashboard-professor', [DashboardController::class, 'professor'])->name('dashboard-professor');
+Route::get('/{subforum}/subforum', [subforumController::class, 'store'])->name('subforum');
 
 require __DIR__.'/auth.php';
