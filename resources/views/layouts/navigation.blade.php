@@ -10,7 +10,7 @@ use Carbon\Carbon;
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <link rel="shortcut icon" href="{{ asset('public/avasus.ico') }}">
+                        <img alt="shortcut icon" width='100' src={{asset('img/avasus.svg')}}>
                     </a>
                 </div>
 
