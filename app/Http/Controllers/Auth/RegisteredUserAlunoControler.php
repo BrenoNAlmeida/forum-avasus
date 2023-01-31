@@ -60,6 +60,7 @@ class RegisteredUserAlunoControler extends Controller
             'data_nascimento' => $request->data_nascimento,
             'estado' => $request->estado,
             'cidade' => $request->cidade,
+            'tipo' => 1,
             'password' => Hash::make($request->password),
         ]);
         event(new Registered($user));

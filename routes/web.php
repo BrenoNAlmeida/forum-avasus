@@ -23,6 +23,8 @@ Route::get('/', function () {
 Route::get ('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard-aluno', [DashboardController::class, 'aluno'])->name('dashboard-aluno');
 Route::get('/dashboard-professor', [DashboardController::class, 'professor'])->name('dashboard-professor');
+Route::get('/dashboard-superuser', [DashboardController::class, 'superuser'])->name('dashboard-superuser');
 Route::get('/{subforum}/subforum', [subforumController::class, 'store'])->name('subforum');
+
 
 require __DIR__.'/auth.php';
