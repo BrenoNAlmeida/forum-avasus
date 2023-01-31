@@ -66,7 +66,7 @@ class alunosSeeder extends Seeder
             'texto' => 'Subforum para teste',
             'ativo' => true,
             'professor_id' => $user2->id,
-            'aluno_id' => $aluno->id,
+            'aluno_id' => $user->id,
             'categoria_id' => '1',
         ]);
         $post = Post::create([

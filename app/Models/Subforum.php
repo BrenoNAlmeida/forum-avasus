@@ -20,9 +20,5 @@ class Subforum extends Model
         return $this->belongsTo(Professor::class);
     }
     
-    public function Aluno()
-    {
-        return $this->hasMany(Aluno::class);
-    }
     
 }
