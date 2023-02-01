@@ -1,9 +1,26 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <img alt="logo" src={{asset("img/avasus.svg")}}>
-            </a>
+            <div class="shrink-0 flex items-center">
+                @if(Auth::user())
+                    @if(Auth::user()->tipo==0)
+                    <a href="{{ route('dashboard-aluno') }}">
+                        <img alt="shortcut icon" width='100' src={{asset('img/avasus.svg')}}>
+                    </a>
+                    @elseif (Auth::user()->tipo==1)
+                    <a href="{{ route('dashboard-professor') }}">
+                        <img alt="shortcut icon" width='100' src={{asset('img/avasus.svg')}}>
+                    </a>
+                    @elseif (Auth::user()->tipo==2)
+                    <a href="{{ route('dashboard-superuser') }}">
+                        <img alt="shortcut icon" width='100' src={{asset('img/avasus.svg')}}>
+                    </a>
+                    @endif
+                @else
+                <a href="{{ route('dashboard') }}">
+                    <img alt="shortcut icon" width='100' src={{asset('img/avasus.svg')}}>
+                @endif
+                </div>
         </x-slot>
 
         <!-- Validation Errors -->

@@ -1,9 +1,5 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard - supeuser') }}
-            
-        </h2>
             <a href="{{ route('register-professor' ) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-2 rounded float:right " >Registrar Professor</a>
     </x-slot>
     <div class="py-12">

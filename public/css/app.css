@@ -800,17 +800,17 @@ select {
 .w-full {
   width: 100%;
 }
-.w-8 {
-  width: 2rem;
-}
-.w-auto {
-  width: auto;
-}
 .w-screen {
   width: 100vw;
 }
 .w-72 {
   width: 18rem;
+}
+.w-8 {
+  width: 2rem;
+}
+.w-auto {
+  width: auto;
 }
 .w-4 {
   width: 1rem;
@@ -1025,9 +1025,13 @@ select {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+.px-20 {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 .px-8 {
   padding-left: 2rem;
@@ -1041,13 +1045,9 @@ select {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
-.px-20 {
-  padding-left: 5rem;
-  padding-right: 5rem;
-}
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 .px-1 {
   padding-left: 0.25rem;
