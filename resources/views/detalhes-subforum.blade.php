@@ -1,11 +1,6 @@
 <x-app-layout>
     <x-slot name="header" class="flex justify-between">
-        <div class="flex justify-between itens-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Detalhes do subforum:
-                {{ $subforum->titulo }}
-            </h2>
-        </div>
+
         <section x-data="{ modalopen: false}">
             <section x-show="modalopen" class="w-screen fixed flex itens-center justify-center">
                 <div class="rounded w-72 p-4 bg-white shadow mt-4">
@@ -119,7 +114,7 @@
                                     if ($ultima_resposta != null) {
                                         $ultima_resposta = $ultima_resposta->created_at;
                                     } else {
-                                        $ultima_resposta = $post->created_at;
+                                        $ultima_resposta = 0;
                                     }
                                     
                                 @endphp

@@ -70,7 +70,7 @@
                                     } else {
                                         $autor = $autor->nome_social;
                                     }
-                                    
+
                                     $ultima_resposta = App\Models\Resposta::where('post_id', $post->id)
                                         ->orderBy('created_at', 'desc')
                                         ->first();
@@ -78,7 +78,7 @@
                                     if ($ultima_resposta != null) {
                                         $ultima_resposta = $ultima_resposta->created_at;
                                     } else {
-                                        $ultima_resposta = $post->created_at;
+                                        $ultima_resposta = 0;
                                     }
                                     
                                 @endphp
