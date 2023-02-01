@@ -1,8 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard - Aluno') }}
-        </h2>
+
     </x-slot>
 
     <div class="py-12">
@@ -16,24 +14,26 @@
                                 <th class="px-4 py-2">Titulo</th>
                                 <th class="px-4 py-2">Descrição</th>
                                 <th class="px-4 py-2">professor</th>
-                                <th class="px-4 py-2">quantidade posts</th>
+                                <th class="px-4 py-2">quantidade Topicos</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($subforuns as $subforum)
+                            @if(!is_null($subforuns))
+                                @foreach ($subforuns as $subforum)
 
-                                @php 
-                                    $professor = App\Models\User::find($subforum->professor_id,);
-                                    $quantidade_posts = App\Models\Post::where('subforum_id', $subforum->id)->count();
-                                @endphp
+                                    @php 
+                                        $professor = App\Models\User::find($subforum->professor_id,);
+                                        $quantidade_posts = App\Models\Post::where('subforum_id', $subforum->id)->count();
+                                    @endphp
 
-                                <tr>
-                                    <td class="border px-4 py-2"><a href="{{ route('subforum', $subforum->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ $subforum->titulo }}</a></td>
-                                    <td class="border px-4 py-2">{{ $subforum->texto }}</td>
-                                    <td class="border px-4 py-2">{{$professor->nome}}</td>
-                                    <td class="border px-4 py-2">{{$quantidade_posts}}</td>
-                                </tr>
-                            @endforeach
+                                    <tr>
+                                        <td class="border px-4 py-2"><a href="{{ route('subforum', $subforum->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ $subforum->titulo }}</a></td>
+                                        <td class="border px-4 py-2">{{ $subforum->texto }}</td>
+                                        <td class="border px-4 py-2">{{$professor->nome}}</td>
+                                        <td class="border px-4 py-2">{{$quantidade_posts}}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                 </div>
             </div>

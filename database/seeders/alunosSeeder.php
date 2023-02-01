@@ -55,7 +55,7 @@ class alunosSeeder extends Seeder
         $user4 = User::create([
             'nome' => 'Jose Nascimento de Almeida',
             'nome_social' => 'jose',
-            'cpf' => '124.276.974-02',
+            'cpf' => '124.276.974-03',
             'data_nascimento' => '2002-10-10',
             'estado' => 'São Paulo',
             'cidade' => 'São Paulo',
@@ -84,10 +84,7 @@ class alunosSeeder extends Seeder
             'user_id' => $user->id,
             'subforum_id' => $subforun->id,
         ]);
-        UserSubforum::create([
-            'user_id' => $user4->id,
-            'subforum_id' => $subforun->id,
-        ]);
+
 
 
         $post = Post::create([
