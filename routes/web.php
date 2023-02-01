@@ -36,8 +36,8 @@ Route::post('/cadastrar-resposta', [PostController::class, 'criarResposta'])->na
 
 
 Route::get('/{subforum}/vincular', [AlunoSubforumController::class, 'show'])->name('vincular-alunos');
-Route::get('/vincular/aluno/subforum/{user}/{Subforum}', [AlunoSubforumController::class, 'vincular'])->name('vincular');
-Route::get('/desvincular/aluno/subforum/{idAluno}/{idSubforum}', [AlunoSubforumController::class, 'desvincular'])->name('desvincular');
+Route::post('/vincular', [AlunoSubforumController::class, 'vincular'])->name('vincular');
+Route::post('/desvincular', [AlunoSubforumController::class, 'desvincular'])->name('desvincular');
 
 //Route::get('/{subforum}/desvincular', [AlunoSubforumController::class, 'desvincular'])->name('desvincular');
 

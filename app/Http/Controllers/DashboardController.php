@@ -21,8 +21,10 @@ class DashboardController extends Controller
         if(auth()->user()->tipo == 0)
         {
             $aluno = User::where('id', auth()->user()->id)->first();
+
             #subforuns de um aluno 
             $subforuns_aluno = UserSubforum::where('user_id', $aluno->id)->get()->first();
+            
             $subforuns_aluno = Subforum::where('id', $subforuns_aluno->subforum_id)->get();
             return view('dashboard-aluno', ['aluno' => $aluno, 'subforuns' => $subforuns_aluno]);
         }
