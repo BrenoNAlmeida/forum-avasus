@@ -1,15 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
-        <section x-data="{ modalopen: false}">
-            <section x-show="modalopen" class="w-screen fixed flex itens-center justify-center">
-                <div class="rounded w-72 p-4 bg-white shadow mt-4">
-                    <div>
-                        <form method="POST" action="/cadastrar-subforum">
-                            @csrf
 
-                            <!-- titulo -->
-                            <div>
-                                <x-label for="titulo" :value="__('titulo')" />
+         <section x-data="{ modalopen: false}">
+        <section x-show="modalopen" class="w-screen fixed flex itens-center justify-center">
+            <div class="rounded w-72 p-4 bg-white shadow mt-4">
+                <div>
+                    <form method="POST" action="/cadastrar-subforum">
+                        @csrf
+                        <!-- titulo -->
+                        <div>
+                            <x-label for="titulo" :value="__('titulo')" />
 
                                 <x-input id="titulo" class="block mt-1 w-full" type="text" name="titulo" :value="old('titulo')" required autofocus />
                             </div>
@@ -47,6 +47,9 @@
             </section>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded" @click="modalopen = true">Criar novo subforum</button>
         </section>
+
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded" @click="modalopen = true">Criar novo subforum</button>
+    </section>
     </x-slot>
 
     <div class="py-12">

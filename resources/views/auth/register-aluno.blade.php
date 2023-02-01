@@ -23,7 +23,7 @@
             <div class="mt-4">
                 <x-label for="nome_social" :value="__('nome social')" />
 
-                <x-input id="nome_social" class="block mt-1 w-full" type="text" name="nome_social" :value="old('nome_social')" required />
+                <x-input id="nome_social" class="block mt-1 w-full" type="text" name="nome_social" :value="old('nome_social')"/>
             </div>
 
             <!-- cpf-->

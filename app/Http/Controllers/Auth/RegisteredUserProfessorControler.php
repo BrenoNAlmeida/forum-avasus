@@ -30,7 +30,7 @@ class RegisteredUserProfessorControler extends Controller
         $request->validate([
 
             'nome' => ['required', 'string', 'max:255'],
-            'nome_social' => ['string', 'max:255'],
+            'nome_social' => ['string', 'max:255', 'nullable'],
             'cpf' => ['required', 'string', 'max:15', 'unique:users'],
             'data_nascimento' => ['required', 'date'],
             'estado' => ['required', 'string', 'max:255'],
