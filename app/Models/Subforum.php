@@ -19,6 +19,9 @@ class Subforum extends Model
     {
         return $this->belongsTo(Professor::class);
     }
-    
+    public function User()
+    {
+        return $this->hasMany(User::class);
+    }
     
 }

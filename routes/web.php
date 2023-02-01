@@ -5,6 +5,7 @@ use Mockery\Generator\Parameter;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SubForumController;
+use App\Http\Controllers\AlunoSubforumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,19 @@ Route::get('/dashboard-aluno', [DashboardController::class, 'aluno'])->name('das
 Route::get('/dashboard-professor', [DashboardController::class, 'professor'])->name('dashboard-professor');
 Route::get('/dashboard-superuser', [DashboardController::class, 'superuser'])->name('dashboard-superuser');
 Route::get('/{subforum}/subforum', [subforumController::class, 'show'])->name('subforum');
+Route::get('/{subforum}/detalhes-subforum', [subforumController::class, 'detalhar'])->name('detalhes-subforum');
 
 Route::post('/cadastrar-subforum', [SubForumController::class, 'criar'])->name('cadastrar-subforum');
-//Route::get('/create-subforum', [SubForumController::class, 'create'])->name('create-subforum');
+
+Route::post('/criar-post', [PostController::class, 'criar_post'])->name('criar-post');
+Route::post('/cadastrar-resposta', [PostController::class, 'criarResposta'])->name('cadastrar-resposta');
+
+
+Route::get('/{subforum}/vincular', [AlunoSubforumController::class, 'show'])->name('vincular-alunos');
+Route::get('/vincular/aluno/subforum/{user}/{Subforum}', [AlunoSubforumController::class, 'vincular'])->name('vincular');
+Route::get('/desvincular/aluno/subforum/{idAluno}/{idSubforum}', [AlunoSubforumController::class, 'desvincular'])->name('desvincular');
+
+//Route::get('/{subforum}/desvincular', [AlunoSubforumController::class, 'desvincular'])->name('desvincular');
 
 Route::put('/trancar/{id}', [PostController::class, 'trancar'])->name('trancar');
 Route::put('/destrancar/{id}', [PostController::class, 'destrancar'])->name('destrancar');

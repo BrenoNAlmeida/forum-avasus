@@ -7,6 +7,7 @@ use App\Models\Professor;
 use App\Models\Subforum;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserSubforum;
 
 class DashboardController extends Controller
 {
@@ -21,8 +22,8 @@ class DashboardController extends Controller
         {
             $aluno = User::where('id', auth()->user()->id)->first();
             #subforuns de um aluno 
-            $subforuns_aluno = subforum::where('aluno_id', $aluno->id)->get();
-
+            $subforuns_aluno = UserSubforum::where('user_id', $aluno->id)->get()->first();
+            $subforuns_aluno = Subforum::where('id', $subforuns_aluno->subforum_id)->get();
             return view('dashboard-aluno', ['aluno' => $aluno, 'subforuns' => $subforuns_aluno]);
         }
     }

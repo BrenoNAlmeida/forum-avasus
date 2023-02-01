@@ -31,38 +31,54 @@ class SubForumController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function criar(Request $request, User $professor)
+    public function criar(Request $request, SubForum $subforum)
     {
         $request->validate([
             'titulo' => ['required', 'string', 'max:255'],
             'texto' => ['required', 'string', 'max:255'],
             'categoria_id' => ['required'],
         ]);
-        $professor_id = auth()->user()->id;
-        $subforum = Subforum::create([
-            'titulo' => $request->nome,
-            'texto' => $request->texto,
-            'categoria_id' => $request->categoria,
-            'professor_id' => $professor_id,
-        ]);
+        $professor = User::where('id', auth()->user()->id)->first();        
+        $subforum = new Subforum;
+        $subforum->titulo = $request->titulo;
+        $subforum->texto = $request->texto;
+        $subforum->ativo = true;
+        $subforum->professor_id = Auth::id();
+        $subforum->categoria_id = $request->categoria_id;
+        $subforum->save();
+        
 
         $subforuns_professor = User::where('id', auth()->user()->id)->first();
 
 
-        return redirect()->route('{subforum->id}/subforum');
+        return redirect()->route('dashboard-professor')->with('success', 'Subforum criado com sucesso!');
     }
 
     public function show($subforum)
     {
-            $aluno = User::where('id', auth()->user()->id)->first();
-            #subforum do id mandado no get
-            $subforum = subforum::where('id', $subforum)->first();
-            #posts do subforum
-            $posts = post::where('subforum_id', $subforum->id)->oldest()->get();
-            #ordena os posts por data
+        $aluno = User::where('id', auth()->user()->id)->first();
+        #subforum do id mandado no get
+        $subforum = subforum::where('id', $subforum)->first();
+        #posts do subforum
+        $posts = post::where('subforum_id', $subforum->id)->latest()->get();
+        #ordena os posts por data
 
 
-            return view('subforum', ['aluno' => $aluno, 'posts' => $posts, 'subforum' => $subforum]);
+        return view('subforum', ['aluno' => $aluno, 'posts' => $posts, 'subforum' => $subforum]);
+    }
+    public function detalhar($subforum)
+    {
+        $aluno = User::where('id', auth()->user()->id)->first();
+        #subforum do id mandado no get
+        $subforum = subforum::where('id', $subforum)->first();
+        #posts do subforum
+        $posts = post::where('subforum_id', $subforum->id)->latest()->get();
+        #ordena os posts por data
+
+
+        return view('detalhes-subforum', ['aluno' => $aluno, 'posts' => $posts, 'subforum' => $subforum]);
         }
+
+
 
 }

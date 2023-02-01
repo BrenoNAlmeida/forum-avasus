@@ -65,7 +65,7 @@ class PostController extends Controller
         $post = Post::where('id', $id)->first();
         $post->ativo = false;
         $post->save();
-        return redirect()->route('subforum', $post->subforum_id);
+        return redirect()->route('detalhes-subforum', $post->subforum_id);
     }
 
     public function destrancar(Request $request, $id)
@@ -73,7 +73,27 @@ class PostController extends Controller
         $post = Post::where('id', $id)->first();
         $post->ativo = true;
         $post->save();
-        return redirect()->route('subforum', $post->subforum_id);
+        return redirect()->route('detalhes-subforum', $post->subforum_id);
+    }
+
+    public function criar_post (Request $request )
+    {
+        $post = new Post();
+        $post->titulo = $request->titulo;
+        $post->texto = $request->texto;
+        $post->subforum_id = $request->subforum_id;
+        $post->aluno_id = auth()->user()->id;
+        $post->ativo = true;
+        $post->save();
+
+
+        
+        if(auth()->user()->tipo == 0)
+            return redirect()->route('dashboard-aluno');
+        elseif(auth()->user()->tipo == 1)
+            return redirect()->route('dashboard-professor');
+        else
+            return redirect()->route('dashboard-superuser');
     }
 
     /**
