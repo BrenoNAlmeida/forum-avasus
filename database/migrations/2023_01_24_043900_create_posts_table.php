@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('texto');
             $table->boolean('ativo')->default(True);
             $table->foreignId('aluno_id')->constrained('users');
-            $table->foreignId('subforum_id')->constrained('subforums');
+            $table->foreignId('subforum_id')->constrained('subforums')->onDelete('cascade');
             $table->timestamps();
         });
     }
