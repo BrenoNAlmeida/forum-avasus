@@ -24,7 +24,6 @@ use Carbon\Carbon;
                     </a>
                     @endif
                 @else
-                <a href="{{ route('dashboard') }}">
                     <img alt="shortcut icon" width='100' src={{asset('img/avasus.svg')}}>
                 @endif
                 </div>
