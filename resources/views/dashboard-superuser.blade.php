@@ -13,6 +13,7 @@
                                 <th class="px-4 py-2">Titulo</th>
                                 <th class="px-4 py-2">categoria</th>
                                 <th class="px-20 py-2">professor</th>
+                                <th class="px-4 py-2">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,6 +29,11 @@
                                     <td class="border px-4 py-2">{{ $subforum->titulo }}</a></td>
                                     <td class="border px-4 py-2">{{ $categoria->nome}}</td>
                                     <td class="border px-6 py-2">{{$professor->nome}}</td>
+                                    <td class="border px-4 py-2">
+                                        <form action="{{ route('apagar-subforum', $subforum->id) }}" method="POST" class="inline">
+                                            @csrf
+                                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Excluir</button>
+                                        </form>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -79,6 +79,11 @@ class SubForumController extends Controller
         return view('detalhes-subforum', ['aluno' => $aluno, 'posts' => $posts, 'subforum' => $subforum]);
         }
 
+    public function apagar($subforum){
+        $subforum = Subforum::where('id', $subforum)->first();
+        $subforum->delete();
+        return redirect()->route('dashboard-superuser')->with('success', 'Subforum deletado com sucesso!');
+    }
 
 
 }
