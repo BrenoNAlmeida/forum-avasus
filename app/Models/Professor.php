@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Professor extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id',
+    ];
 
     public function Subforum()
     {

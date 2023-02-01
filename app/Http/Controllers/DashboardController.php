@@ -39,4 +39,13 @@ class DashboardController extends Controller
         }
     }
 
+    public function superuser()
+    {
+        if(auth()->user()->tipo == 2)
+        {
+            $subforuns = subforum::all();    
+            return view('dashboard-superuser', ['subforuns' => $subforuns]);
+        }
+    }
+
 }

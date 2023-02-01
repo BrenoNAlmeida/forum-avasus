@@ -1,20 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard - Professor') }}
+            {{ __('Dashboard - supeuser') }}
+            
         </h2>
+            <a href="{{ route('register-professor' ) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-2 rounded float:right " >Registrar Professor</a>
     </x-slot>
-
-    <section x-data="{ modalopen: false}">
-        <section x-show="modalopen" class="w-screen fixed flex itens-center justify-center">
-            <div class="rounded w-72 p-4 bg-white shadow mt-4">
-                <h1>teste modal</h1>
-                <button @click="modalopen = false">fechar modal</button>
-            </div>
-        </section>
-        <button @click="modalopen = true">abrir modal</button>
-    </section>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -24,24 +15,23 @@
                         <thead>
                             <tr>
                                 <th class="px-4 py-2">Titulo</th>
-                                <th class="px-4 py-2">Descrição</th>
-                                <th class="px-20 py-2">quantidade posts</th>
+                                <th class="px-4 py-2">categoria</th>
+                                <th class="px-20 py-2">professor</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($subforuns as $subforum)
 
                                 @php 
-                                
                                     $professor = App\Models\User::find($subforum->professor_id,);
-                                    $quantidade_posts = App\Models\Post::where('subforum_id', $subforum->id)->count();
+                                    $categoria = App\Models\Categoria::find($subforum->categoria_id);
                                 @endphp
 
 
                                 <tr>
-                                    <td class="border px-4 py-2"><a href="{{ route('subforum', $subforum->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ $subforum->titulo }}</a></td>
-                                    <td class="border px-4 py-2">{{ $subforum->texto }}</td>
-                                    <td class="border px-6 py-2">{{$quantidade_posts}}</td>
+                                    <td class="border px-4 py-2">{{ $subforum->titulo }}</a></td>
+                                    <td class="border px-4 py-2">{{ $categoria->nome}}</td>
+                                    <td class="border px-6 py-2">{{$professor->nome}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -45,6 +45,11 @@ class AuthenticatedSessionController extends Controller
             Alert::success('Sucesso', 'Login realizado com sucesso');
             return redirect()->route('dashboard-professor');
         }
+        if($tipo == 2)
+        {
+            Alert::success('Sucesso', 'Login realizado com sucesso');
+            return redirect()->route('dashboard-superuser');
+        }
         else
         {
             return redirect()->route('dashboard');

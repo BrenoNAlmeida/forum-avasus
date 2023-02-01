@@ -41,6 +41,16 @@ class alunosSeeder extends Seeder
             'tipo'=> 1,
             'password' => Hash::make('12345678'),
         ]);
+        $user3 = User::create([
+            'nome' => 'Popis Nascimento de Almeida',
+            'nome_social' => 'popy',
+            'cpf' => '124.276.974-02',
+            'data_nascimento' => '2002-10-10',
+            'estado' => 'São Paulo',
+            'cidade' => 'São Paulo',
+            'tipo'=> 2,
+            'password' => Hash::make('12345678'),
+        ]);
         
         $professor = Professor::create([
             'user_id' => $user2->id,
@@ -57,6 +67,7 @@ class alunosSeeder extends Seeder
             'ativo' => true,
             'professor_id' => $user2->id,
             'aluno_id' => $aluno->id,
+            'categoria_id' => '1',
         ]);
         $post = Post::create([
             'titulo' => 'teste',

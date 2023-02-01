@@ -17,7 +17,7 @@
 
 <!-- Modal -->
 <!-- form criar novo forum modal-->
-<!--
+
 <div class="modal-group row">
     <form>
         <div class="form-group row">
@@ -59,4 +59,3 @@
     </form>
 </div>
 
--->
