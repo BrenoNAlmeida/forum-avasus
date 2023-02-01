@@ -10,6 +10,7 @@ use App\Models\Professor;
 use App\Models\Subforum;
 use App\Models\Post;
 use App\Models\Resposta;
+use App\Models\UserSubforum;
 use tidy;
 
 class alunosSeeder extends Seeder
@@ -33,7 +34,7 @@ class alunosSeeder extends Seeder
 
         $user2 = User::create([
             'nome' => 'João Nascimento de Almeida',
-            'nome_social' => 'Brunão',
+            'nome_social' => 'joão',
             'cpf' => '124.276.974-01',
             'data_nascimento' => '2002-10-10',
             'estado' => 'São Paulo',
@@ -51,6 +52,16 @@ class alunosSeeder extends Seeder
             'tipo'=> 2,
             'password' => Hash::make('12345678'),
         ]);
+        $user4 = User::create([
+            'nome' => 'Jose Nascimento de Almeida',
+            'nome_social' => 'jose',
+            'cpf' => '124.276.974-02',
+            'data_nascimento' => '2002-10-10',
+            'estado' => 'São Paulo',
+            'cidade' => 'São Paulo',
+            'tipo'=> 0,
+            'password' => Hash::make('12345678'),
+        ]);
         
         $professor = Professor::create([
             'user_id' => $user2->id,
@@ -66,9 +77,19 @@ class alunosSeeder extends Seeder
             'texto' => 'Subforum para teste',
             'ativo' => true,
             'professor_id' => $user2->id,
-            'aluno_id' => $aluno->id,
-            'categoria_id' => '1',
+            'categoria_id' => 2,
         ]);
+
+        UserSubforum::create([
+            'user_id' => $user->id,
+            'subforum_id' => $subforun->id,
+        ]);
+        UserSubforum::create([
+            'user_id' => $user4->id,
+            'subforum_id' => $subforun->id,
+        ]);
+
+
         $post = Post::create([
             'titulo' => 'teste',
             'texto' => 'Post para teste',

@@ -1,13 +1,12 @@
 <x-app-layout>
     <x-slot name="header" class="flex justify-between">
-
         <div class="flex justify-between itens-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Topicos do subforum:
+                Detalhes do subforum:
                 {{ $subforum->titulo }}
             </h2>
         </div>
-                <section x-data="{ modalopen: false}">
+        <section x-data="{ modalopen: false}">
             <section x-show="modalopen" class="w-screen fixed flex itens-center justify-center">
                 <div class="rounded w-72 p-4 bg-white shadow mt-4">
                     <div>
@@ -42,7 +41,49 @@
             </button>
         </section>
     </x-slot>
+<!-- separar as tabelas -->
+<div>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <!-- tabela com os subforuns associados ao aluno-->
+                    <table class="table-auto">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-2">Titulo</th>
+                                <th class="px-4 py-2">quantidade de posts</th>
+                                <th class="px-4 py-2">categoria</th>
+                                <th class="px-4 py-2">quantidade de alunos</th>
+                                <th class="px-4 py-2">ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
+                            @php
+                                $quantidade_posts = App\Models\Post::where('subforum_id', $subforum->id)->count();
+                                //quantidade de alunos relacionados ao subforum
+                                $quantidade_alunos = App\Models\UserSubforum::where('subforum_id', $subforum->id)->count();
+                                //dd($quantidade_alunos);
+                                $categoria = App\Models\Categoria::find($subforum->categoria_id);
+                                
+                            @endphp
+
+                            <tr>
+                                <td class="border px-4 py-2">{{ $subforum->titulo }}</td>
+                                <td class="border px-4 py-2">{{ $quantidade_posts }}</td>
+                                <td class="border px-4 py-2">{{ $categoria->nome }}</td>
+                                <td class="border px-4 py-2">{{ $quantidade_alunos }}</td>
+                                <td class="border px-4 py-2"><a href="{{ route('vincular-alunos', $subforum->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Adicionar Alunos</a></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -93,17 +134,9 @@
                                     <th class="border px-4 py-2">{{ $quantidade_respotas }}</th>
                                     <th class="border px-4 py-2">{{ $post->created_at }}</th>
                                     <th class="border px-4 py-2">{{ $ultima_resposta }}</th>
+
                                     <!-- botão para responder -->
-                                    @if (Auth::user()->tipo == 0 && $post->ativo == true)
-                                        <th class="border px-4 py-2">
-                                            <a href="{{ route('subforum', $subforum->id) }}"
-                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Responder</a>
-                                        </th>
-
-                                        <!-- botão para adicionar aluno -->
-                                    @elseif(Auth::user()->tipo == 1)
                                         <th class="border px-8 py-2">
-
                                             <!-- botão para trancar -->
                                             @if ($post->ativo == true)
                                                 <form action="/trancar/{{ $post->id }}" method="POST">
@@ -121,10 +154,9 @@
                                                     <input type="hidden" name="id" value="{{ $post->id }}">
                                                     <button type="submit"
                                                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Destrancar</button>
-                                              </form>
+                                            </form>
                                             @endif
                                         </th>
-                                    @endif
                             @endforeach
                         </tbody>
                 </div>

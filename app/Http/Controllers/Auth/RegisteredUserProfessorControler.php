@@ -56,7 +56,7 @@ class RegisteredUserProfessorControler extends Controller
         ]);
         event(new Registered($user));
 
-        $professor = Professor::create([
+        Professor::create([
             'user_id' => $user->id
         ]);
         Alert::success('Sucesso', 'Professor cadastrado com sucesso');
