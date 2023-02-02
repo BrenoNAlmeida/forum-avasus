@@ -101,6 +101,8 @@
                                         </th>
 
                                         <!-- botão para adicionar aluno -->
+                                    @elseif(Auth::user()->tipo==0 && $post->ativo == false)
+                                        <th class="border px-4 py-2">Trancado</th>
                                     @elseif(Auth::user()->tipo == 1)
                                         <th class="border px-8 py-2">
 
