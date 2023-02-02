@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Models\Resposta;
 
 class PostController extends Controller
 {
@@ -86,12 +87,13 @@ class PostController extends Controller
         $post->ativo = true;
         $post->save();
 
-
+        $respostas = Resposta::where('post_id', $post->id)->get();
+        
         
         if(auth()->user()->tipo == 0)
-            return redirect()->route('dashboard-aluno');
+            return view('responder-post',['post' => $post, 'respostas' => $respostas]);
         elseif(auth()->user()->tipo == 1)
-            return redirect()->route('dashboard-professor');
+        return view('responder-post',['post' => $post, 'respostas' => $respostas]);
         else
             return redirect()->route('dashboard-superuser');
     }
