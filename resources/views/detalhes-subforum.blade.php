@@ -24,11 +24,11 @@
                             <input type="hidden" name="subforum_id" value="{{ $subforum->id }}">
 
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-sm btn-primary">Salvar</button>
+                                <button type="submit" class=" mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded ">Salvar</button>
                             </div>
                         </form>
                     </div>
-                    <button @click="modalopen = false">Cancelar</button>
+                    <button class=" mt-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded " @click="modalopen = false">Cancelar</button>
                 </div>
             </section>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"

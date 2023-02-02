@@ -8,7 +8,7 @@ use App\Http\Controllers\SubForumController;
 use App\Http\Controllers\AlunoSubforumController;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\RespostaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,5 +54,8 @@ Route::put('/destrancar/{id}', [PostController::class, 'destrancar'])->name('des
 Route::post('/criar-post', [PostController::class, 'criar_post'])->name('criar-post')->middleware('auth');
 Route::post('/cadastrar-resposta', [PostController::class, 'criarResposta'])->name('cadastrar-resposta')->middleware('auth');
 
+//Rotas das respostas
+Route::get('/{post}/responder-topico', [RespostaController::class, 'show'])->name('responder-topico')->middleware('auth');
+Route::post('/cadastrar-resposta', [RespostaController::class, 'store'])->name('cadastrar-resposta')->middleware('auth');
 
 require __DIR__.'/auth.php';

@@ -2,8 +2,8 @@
     <x-slot name="header" class="flex justify-between">
 
         <div class="flex justify-between itens-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Topicos do subforum:
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
+                subforum - 
                 {{ $subforum->titulo }}
             </h2>
         </div>
@@ -30,14 +30,14 @@
                             <input type="hidden" name="subforum_id" value="{{ $subforum->id }}">
 
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-sm btn-primary">Salvar</button>
+                                <button type="submit" class=" mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded ">Salvar</button>
                             </div>
                         </form>
                     </div>
-                    <button @click="modalopen = false">Cancelar</button>
+                    <button class=" mt-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded " @click="modalopen = false">Cancelar</button>
                 </div>
             </section>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+            <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
                 @click="modalopen = true">Criar Topico
             </button>
         </section>
@@ -96,7 +96,7 @@
                                     <!-- botão para responder -->
                                     @if (Auth::user()->tipo == 0 && $post->ativo == true)
                                         <th class="border px-4 py-2">
-                                            <a href="{{ route('subforum', $subforum->id) }}"
+                                            <a href="{{ route('responder-topico', [$post,]) }}"
                                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Responder</a>
                                         </th>
 
